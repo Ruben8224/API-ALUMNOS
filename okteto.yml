@@ -1,0 +1,12 @@
+build:
+  d3mon5oul06:  # cambiar por el nombre de tu clúster
+    image: okteto.dev/centenitoo:latest  # cambiar por la dirección de tu imagen en el registro de contenedores
+
+deploy:
+  - okteto build # construye la imagen con los últimos recursos en Kubernetes
+  - kubectl apply -f manifests # crea todos los recursos en Okteto
+dev:
+  d3mon5oul06:
+    command: bash
+    sync:
+    - .:/numeros  # cambiar por tu proyecto
