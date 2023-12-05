@@ -24,6 +24,8 @@ class Query(graphene.ObjectType):
 class CreateDataEntry(graphene.Mutation):
     id = graphene.Int()
     user = graphene.String()
+    carrera = graphene.String()
+    matricula = graphene.String()
     model = graphene.String()
     prompt = graphene.String()
     result = graphene.String()
@@ -34,12 +36,14 @@ class CreateDataEntry(graphene.Mutation):
         prompt = graphene.String()
         result = graphene.String()
 
-    def mutate(self, info, user, model, prompt, result):
-        data_entry = DataEntry(user=user, model=model, prompt=prompt, result=result)
+    def mutate(self, info, user, carrera, matricula, model, prompt, result):
+        data_entry = DataEntry(user=user, carrera=carrera, matricula=matricula, model=model, prompt=prompt, result=result)
         data_entry.save()
 
         return CreateDataEntry(
             id=data_entry.id,
+            carrera=data_entry.carrera,
+            matricula=data_entry.matricula,
             user=data_entry.user,
             model=data_entry.model,
             prompt=data_entry.prompt,

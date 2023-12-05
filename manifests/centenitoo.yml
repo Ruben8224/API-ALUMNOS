@@ -34,7 +34,7 @@ metadata:
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
-  type: ClusterIP  
+  type: ClusterIP
   ports:
   - name: "centenitoo"
     port: 8080

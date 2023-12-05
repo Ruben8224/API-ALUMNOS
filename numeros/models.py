@@ -19,3 +19,4 @@ class Numero(models.Model):
 class Vote(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     numero = models.ForeignKey('numeros.Numero', related_name='numeros', on_delete=models.CASCADE)
+    
